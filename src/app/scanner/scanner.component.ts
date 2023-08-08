@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environments';
+import { ScannerService } from '../scanner.service';
 
 @Component({
   selector: 'app-scanner',
@@ -10,7 +11,7 @@ import {environment} from '../../environments/environments';
 export class ScannerComponent {
   public code: string = '';
   private scanTimeout: any;
-  private readonly baseUrl: string = `http://localhost:8080/api/scanner`;
+  private baseUrl: string = `http://localhost:8080/api/scanner`;
 
   @ViewChild('codeInput') codeInput: any;
 
@@ -31,8 +32,12 @@ export class ScannerComponent {
 
   processScannedCode(): void {
     console.log('Scanned Code:', this.code);
-    this.http.post<String>(`${this.baseUrl}/new`, this.code);
+    this.scannerservice(this.code);
     this.clearInput();
+  }
+
+  sendtobackend(data: String){
+   return this.http.post(this.baseUrl, data);
   }
 
     clearInput(): void {

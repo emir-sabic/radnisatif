@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ScannerComponent } from './scanner/scanner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { ScannerService } from './scanner.service';
 
 @NgModule({
   declarations: [
