@@ -1,21 +1,9 @@
-
-<head>
-  <title>QR Code Attendance App</title>
-</head>
-<body>
-<header>
-  <h1>QR Code Attendance App</h1>
-</header>
-<main>
-  <div class="qr-scanner">
-    <textarea></textarea>
+<div class="scanner-container">
+  <div class="input">
+    <input #codeInput type="text" (input)="handleInput($event)">
+    <button (click)="processScannedCode()">Process Scanned Code</button>
   </div>
-  <button id="scan-button">Scan QR Code</button>
-  <div id="result"></div>
-</main>
-<footer>
-  <p>&copy; 2023 QR Code Attendance App</p>
-</footer>
-<script src="qr-scanner.js"></script>
-</body>
-
+  <div class="ouput">
+    <p>Scanned Code: {{ code }}</p>
+  </div>
+</div>
