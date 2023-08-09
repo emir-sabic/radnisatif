@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environments';
 import { ScannerService } from '../scanner.service';
+import { ScannerModel } from '../scanner.model';
 
 @Component({
   selector: 'app-scanner',
@@ -9,8 +10,17 @@ import { ScannerService } from '../scanner.service';
   styleUrls: ['./scanner.component.css']
 })
 export class ScannerComponent {
+  scannermodel: ScannerModel = {
+    barcode: '',
+    attendancetype: '',
+    scanDateTime: '',
+  };
+
+  feedbackMessage: string = '';
   public code: string = '';
   private scanTimeout: any;
+  public selectedAttendanceType: string = '';
+
   private baseUrl: string = `http://localhost:8080/api/scanner`;
 
 
@@ -23,8 +33,6 @@ export class ScannerComponent {
 
     const inputElement = event.target as HTMLInputElement;
     this.code = inputElement.value;
-    console.log('Scanned Code111:', this.code);
-
     clearTimeout(this.scanTimeout);
     this.scanTimeout = setTimeout(() => {
       this.processScannedCode();
@@ -32,13 +40,21 @@ export class ScannerComponent {
   }
 
   processScannedCode(): void {
-    console.log('Scanned Code:', this.code);
-    this.scannerservice.createLog(this.code).subscribe();
-    this.clearInput();
-  }
+    this.scannermodel.barcode = this.code;
+    this.scannermodel.attendancetype = this.selectedAttendanceType;
+    this.scannermodel.scanDateTime = new Date().toLocaleString();
 
-  sendtobackend(data: String){
-   return this.http.post(this.baseUrl, data);
+    this.scannerservice.createScan(this.scannermodel).subscribe(
+    response => {
+              this.feedbackMessage = 'Scan created successfully';
+              this.scannerservice.showSuccessFeedback(this.feedbackMessage);
+            },
+            error => {
+              this.feedbackMessage = 'Error creating scan';
+              console.error('Error creating scan', error);
+            }
+    );
+    this.clearInput();
   }
 
     clearInput(): void {
@@ -47,4 +63,5 @@ export class ScannerComponent {
         this.code = '';
       }
     }
+
 }

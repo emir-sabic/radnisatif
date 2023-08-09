@@ -1,9 +1,16 @@
 <div class="scanner-container">
+  <select id="attendanceType" name="attendanceType" [(ngModel)]="selectedAttendanceType">
+    <option value="dolazak_sa_pauze">Dolazak sa Pauze</option>
+    <option value="odlazak_na_pauzu">Odlazak na Pauzu</option>
+    <option value="odlazak_sluzbeno">Odlazak - Sluzbeno</option>
+    <option value="odlazak_sluzbeno">Odlazak - Sluzbeno</option>
+  </select>
   <div class="input">
     <input #codeInput type="text" (input)="handleInput($event)">
-    <button type="button" (click)="processScannedCode()">Process Scanned Code</button>
   </div>
   <div class="ouput">
     <p>Scanned Code: {{ code }}</p>
+    <p>Prisutan: {{ scannermodel.attendancetype }} </p>
   </div>
 </div>
+

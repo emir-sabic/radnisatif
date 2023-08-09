@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
+import {ScannerModel} from "./scanner.model";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ScannerService {
   private readonly baseUrl: string = `http://localhost:8080/api/scanner`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  createLog(code: any): Observable<any> {
-     return this.http.post<any>(`${this.baseUrl}/new`, code);
+  createScan(scannermodel: ScannerModel): Observable<ScannerModel> {
+    return this.http.post<ScannerModel>(`${this.baseUrl}/new`, scannermodel);
   }
 
-
-
+  showSuccessFeedback(message: string){
+    this.snackBar.open(message, 'Dismiss', {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
+  }
 }

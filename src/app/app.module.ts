@@ -7,17 +7,22 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ScannerService } from './scanner.service';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScannerComponent
+    ScannerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    MatSnackBarModule,
   ],
   providers: [ScannerService],
   bootstrap: [AppComponent]
