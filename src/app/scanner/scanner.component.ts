@@ -13,9 +13,10 @@ export class ScannerComponent {
   private scanTimeout: any;
   private baseUrl: string = `http://localhost:8080/api/scanner`;
 
+
   @ViewChild('codeInput') codeInput: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private scannerservice : ScannerService) {}
 
 
   handleInput(event: Event): void {
@@ -32,7 +33,7 @@ export class ScannerComponent {
 
   processScannedCode(): void {
     console.log('Scanned Code:', this.code);
-    this.scannerservice(this.code);
+    this.scannerservice.createLog(this.code).subscribe();
     this.clearInput();
   }
 

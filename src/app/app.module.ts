@@ -19,7 +19,7 @@ import { ScannerService } from './scanner.service';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [ScannerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

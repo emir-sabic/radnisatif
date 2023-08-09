@@ -4,12 +4,12 @@ import {Observable, of} from "rxjs";
 
 @Injectable()
 export class ScannerService {
-  private baseUrl = `http://localhost:8080/api/scanner`;
+  private readonly baseUrl: string = `http://localhost:8080/api/scanner`;
 
   constructor(private http: HttpClient) {}
 
-  createLog(code: String): Observable<any> {
-    return this.http.post(this.baseUrl, code);
+  createLog(code: any): Observable<any> {
+     return this.http.post<any>(`${this.baseUrl}/new`, code);
   }
 
 

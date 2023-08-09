@@ -1,7 +1,7 @@
 <div class="scanner-container">
   <div class="input">
     <input #codeInput type="text" (input)="handleInput($event)">
-    <button (click)="processScannedCode()">Process Scanned Code</button>
+    <button type="button" (click)="processScannedCode()">Process Scanned Code</button>
   </div>
   <div class="ouput">
     <p>Scanned Code: {{ code }}</p>
