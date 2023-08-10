@@ -56,14 +56,14 @@ export class ScannerComponent {
     );
 
 // TRENUTNO NE RADI
-//     this.scannerservice.fetchScan(this.code).subscribe(
-//           data => {
-//             this.fetchedScan = data;
-//           },
-//           error => {
-//             console.error('Error fetching data:', error);
-//           }
-//         );
+    this.scannerservice.fetchScan(this.code).subscribe(
+          data => {
+            this.fetchedScan = data;
+          },
+          error => {
+            console.error('Error fetching data:', error);
+          }
+        );
 
     this.clearInput();
   }

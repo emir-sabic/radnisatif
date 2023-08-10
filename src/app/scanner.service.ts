@@ -21,7 +21,7 @@ export class ScannerService {
     });
   }
 
-//   fetchScan(barcode: String): Observable<ScannerModel>{
-//     return this.http.get<ScannerModel>(`${this.baseUrl}/get`);
-//   }
+  fetchScan(barcode?: string): Observable<ScannerModel>{
+   return this.http.get<ScannerModel>(`${this.baseUrl}/${barcode}`);
+  }
 }
