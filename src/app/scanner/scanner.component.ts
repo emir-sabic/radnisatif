@@ -15,7 +15,7 @@ export class ScannerComponent {
     attendancetype: '',
     scanDateTime: '',
   };
-
+  public fetchedScan: ScannerModel = {} as ScannerModel;
   feedbackMessage: string = '';
   public code: string = '';
   private scanTimeout: any;
@@ -54,6 +54,17 @@ export class ScannerComponent {
               console.error('Error creating scan', error);
             }
     );
+
+// TRENUTNO NE RADI
+//     this.scannerservice.fetchScan(this.code).subscribe(
+//           data => {
+//             this.fetchedScan = data;
+//           },
+//           error => {
+//             console.error('Error fetching data:', error);
+//           }
+//         );
+
     this.clearInput();
   }
 

@@ -20,4 +20,8 @@ export class ScannerService {
       verticalPosition: 'top',
     });
   }
+
+//   fetchScan(barcode: String): Observable<ScannerModel>{
+//     return this.http.get<ScannerModel>(`${this.baseUrl}/get`);
+//   }
 }
