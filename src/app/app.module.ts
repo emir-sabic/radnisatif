@@ -9,12 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ScannerService } from './scanner.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AdminpageComponent } from './adminpage/adminpage.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ScannerComponent,
+    AdminpageComponent,
   ],
   imports: [
     BrowserModule,
