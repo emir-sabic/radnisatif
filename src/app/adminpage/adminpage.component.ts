@@ -17,6 +17,11 @@ export class AdminpageComponent {
     currentstate: '',
   };
 
+  scans: ScannerModel[] = [];
+  searchBarcode: string = '';
+  searchAttendanceType: string = '';
+  searchCurrentState: string = '';
+  filteredScans: any[] = [];
 
   constructor(private http: HttpClient, private scannerservice : ScannerService) {}
 
@@ -28,6 +33,48 @@ export class AdminpageComponent {
 
     this.scannerservice.createScan(this.scannermodel).subscribe();
   }
+
+
+  applyFilter() {
+    this.filteredScans = this.scans.filter(scan =>
+      this.matchesSearch(scan)
+    );
+  }
+
+  matchesSearch(scan: ScannerModel): boolean {
+    return this.matchesBarcode(scan) && this.matchesAttendanceType(scan) && this.matchesCurrentState(scan);
+  }
+
+  matchesBarcode(scan: ScannerModel): boolean {
+    return !this.searchBarcode || scan.barcode === this.searchBarcode;
+  }
+
+  matchesAttendanceType(scan: ScannerModel): boolean {
+    return !this.searchAttendanceType || scan.attendancetype.includes(this.searchAttendanceType);
+  }
+
+  matchesCurrentState(scan: ScannerModel): boolean {
+    return !this.searchCurrentState || scan.currentstate.includes(this.searchCurrentState);
+  }
+
+  ngOnInit() {
+      this.fetchScans();
+    }
+
+   fetchScans() {
+    this.scannerservice.getScans().subscribe(
+      (data) => {
+        this.scans = data;
+        this.applyFilter();
+      },
+      error => {
+        console.error('Error fetching data:', error);
+      }
+    );
+  }
+
+
+
 
 
 

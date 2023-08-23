@@ -1,36 +1,58 @@
-/* Add this to your CSS file */
 .scanner-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  gap: 20px;
   padding: 20px;
-  border: 1px solid #ccc;
+}
+
+.output, .input {
+  width: 100%;
+  text-align: center;
+}
+
+.output {
+  font-size: 18px;
+  background-color: #f0f0f0;
+  padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.ouput {
-  margin-bottom: 20px;
-}
-
-button {
-  display: block;
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 
 .input {
-  margin-top: 20px;
+  font-size: 35px;
+
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.skeniraj{
+  margin:20px;
+}
+
+.odabrano{
+  font-size: 30px;
+  font-color: #ff0000;
+  padding:30px;
+}
+
+button {
+  font-size: 45px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin:20px;
+}
+
+input[type="text"] {
+  width: 40%;
+  font-size: 25px;
+  padding: 30px;
+  border: 2px solid #000000;
+  border-radius: 8px;
 }

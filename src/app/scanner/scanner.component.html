@@ -1,15 +1,15 @@
 <div class="scanner-container">
   <div class="ouput">
-    <div>Trenutno stanje je: {{ scannermodel.currentstate }}</div>
+    <div class="odabrano">Trenutno stanje: {{ scannermodel.currentstate }}</div>
   </div>
   <div>
-    <div>Odabrano je: {{ this.scannermodel.attendancetype }} </div>
+    <div class="odabrano">Odsustvo: {{ this.scannermodel.attendancetype }} </div>
     <button (click)="changeAttendanceType('pauza')">Pauza</button>
     <button (click)="changeAttendanceType('sluzbeno')">Sluzbeno</button>
     <button (click)="changeAttendanceType('redovno')">Redovno</button>
   </div>
   <div class="input">
-    <div>Skeniraj kod</div>
+    <div class="skeniraj">Skeniraj kod</div>
     <input #codeInput type="text" (input)="handleInput($event)">
   </div>
 </div>

@@ -10,6 +10,8 @@ import { ScannerService } from './scanner.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminpageComponent } from './adminpage/adminpage.component';
+import { AdminrecentComponent } from './adminrecent/adminrecent.component';
+
 
 
 
@@ -18,6 +20,8 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
     AppComponent,
     ScannerComponent,
     AdminpageComponent,
+    AdminrecentComponent,
+
   ],
   imports: [
     BrowserModule,

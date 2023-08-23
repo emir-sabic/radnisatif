@@ -14,7 +14,7 @@ export class ScannerService {
     return this.http.post<ScannerModel>(`${this.baseUrl}/new`, scannermodel);
   }
 
-  showSuccessFeedback(message: string){
+  showFeedback(message: string){
     this.snackBar.open(message, 'Dismiss', {
       duration: 3000,
       verticalPosition: 'top',
@@ -24,4 +24,9 @@ export class ScannerService {
   searchByBarcode(barcode: string): Observable<ScannerModel>{
    return this.http.get<ScannerModel>(`${this.baseUrl}/search/${barcode}`);
   }
+
+
+  getScans(barcode?: string): Observable<ScannerModel[]> {
+      return this.http.get<ScannerModel[]>(`${this.baseUrl}`);
+    }
 }

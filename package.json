@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
     "cors": "^2.8.5",
+    "ng2-search-filter": "^0.5.1",
     "ngx-qrcode": "^0.1.0-rc.1",
     "ngx-webcam": "^0.4.1",
     "rxjs": "~7.8.0",
